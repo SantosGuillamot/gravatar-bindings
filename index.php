@@ -52,3 +52,31 @@ function gravatar_register_block_bindings_source() {
 	);
 }
 add_action( 'init', 'gravatar_register_block_bindings_source' );
+
+/**
+ * Enqueue JS files.
+ */
+function gravatar_editor_assets() {
+	$asset = include plugin_dir_path( __FILE__ ) . '/build/index.asset.php';
+
+	wp_enqueue_script(
+		'gravatar-editor-bindings',
+		plugin_dir_url( __FILE__ ) . '/build/index.js',
+		$asset['dependencies'],
+		$asset['version'],
+		true
+	);
+
+	// Pass JSON data to script.
+	// This shouldn't be needed if working with Gravatar API.
+	$json_data = file_get_contents( plugin_dir_path( __FILE__ ) . 'simulate-data.json' );
+	$response  = json_decode( $json_data, true );
+	wp_localize_script(
+		'gravatar-editor-bindings',
+		'gravatarData',
+		array(
+			'apiResponse' => $response,
+		)
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'gravatar_editor_assets' );
