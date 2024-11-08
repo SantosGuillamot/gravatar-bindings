@@ -23,4 +23,16 @@ registerBlockBindingsSource({
     }
     return newValues;
   },
+  setValues({ bindings }) {
+    Object.values(bindings).forEach(({ args, newValue }) => {
+      const { id, field } = args;
+      apiResponse[id][field] = newValue;
+    });
+    // Update JSON file.
+    // DON'T DO THIS. This is just an example.
+    wp.ajax.post("update_gravatar_json_data", {
+      api_response: JSON.stringify(apiResponse),
+    });
+  },
+  canUserEditValue: () => true,
 });

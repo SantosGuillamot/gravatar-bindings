@@ -80,3 +80,15 @@ function gravatar_editor_assets() {
 	);
 }
 add_action( 'enqueue_block_editor_assets', 'gravatar_editor_assets' );
+
+/**
+ * Add way to edit the JSON file.
+ * This shouldn't be needed if working with Gravatar API.
+ */
+function update_gravatar_json_data() {
+	$api_response = stripslashes( $_REQUEST['api_response'] );
+	file_put_contents( plugin_dir_path( __FILE__ ) . 'simulate-data.json', $api_response );
+	wp_send_json_success();
+}
+add_action( 'wp_ajax_update_gravatar_json_data', 'update_gravatar_json_data' );
+add_action( 'wp_ajax_nopriv_update_gravatar_json_data', 'update_gravatar_json_data' );
