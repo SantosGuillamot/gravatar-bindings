@@ -27,19 +27,26 @@ function gravatar_register_block_bindings_source() {
 		array(
 			'label'              => __( 'Gravatar', 'santosguillamot' ),
 			'get_value_callback' => function ( $source_args ) {
-				// Fetch data from Gravatar API.
-				$args = array();
-				// Add auth headers if API key is set.
-				if ( isset( $_ENV['GRAVATAR_API_KEY'] ) ) {
-					$args['headers'] = array(
-						'Authorization' => 'Bearer ' . $_ENV['GRAVATAR_API_KEY'],
-					);
-				}
-				$response = wp_remote_get( 'https://api.gravatar.com/v3/profiles/' . $source_args['id'], $args );
-				$body = wp_remote_retrieve_body( $response );
-				$data = json_decode( $body );
+				// Read from JSON file.
+				$file = file_get_contents( plugin_dir_url( __FILE__ ) . '/simulate-data.json' );
+				$api_response = json_decode( $file );
+				$user_id = $source_args['id'];
 				$field = $source_args['field'];
-				return $data->$field;
+				return $api_response->$user_id->$field;
+
+				// Fetch data from Gravatar API.
+				// $args = array();
+				// // Add auth headers if API key is set.
+				// if ( isset( $_ENV['GRAVATAR_API_KEY'] ) ) {
+				// $args['headers'] = array(
+				// 'Authorization' => 'Bearer ' . $_ENV['GRAVATAR_API_KEY'],
+				// );
+				// }
+				// $response = wp_remote_get( 'https://api.gravatar.com/v3/profiles/' . $source_args['id'], $args );
+				// $body = wp_remote_retrieve_body( $response );
+				// $data = json_decode( $body );
+				// $field = $source_args['field'];
+				// return $data->$field;
 			},
 		)
 	);

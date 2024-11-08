@@ -1,0 +1,189 @@
+{
+  "santosguillamot": {
+    "hash": "804c712f8caecd3cd879eabfbdbf188935e454b65edbe7e253c0144af7dd51da",
+    "display_name": "Mario Santos",
+    "profile_url": "https://gravatar.com/santosguillamot",
+    "avatar_url": "https://0.gravatar.com/avatar/a67acf2d9492f58ee6fd3512daecc166",
+    "avatar_alt_text": "",
+    "location": "Burgos, Spain",
+    "description": "WordPress contributor, sponsored by Automattic.",
+    "job_title": "Code Wrangler",
+    "company": "Automattic",
+    "verified_accounts": [],
+    "pronunciation": "",
+    "pronouns": ""
+  },
+  "birgitpauli": {
+    "hash": "d121975f90f99b1fab5618e1ad20f146a1bf9793d68907fe4c6fb3288109b461",
+    "display_name": "Birgit Pauli-Haack",
+    "profile_url": "https://gravatar.com/birgitpauli",
+    "avatar_url": "https://0.gravatar.com/avatar/56968a8883883dc6d67e090ee5467ef8",
+    "avatar_alt_text": "",
+    "location": "München, Germany",
+    "description": "Birgit Pauli-Haack is a WordPress developer advocate, sponsored by Automattic. She   curates community voices around Gutenberg, the WordPress editor on Gutenberg Times and co-host the Gutenberg Changelog podcast. Prior to working for Automattic, she helped organizations, corporations, and individuals create their online communication strategy and web presence at Pauli Systems, a web development agency she founded back in 2002.",
+    "job_title": "WordPress Developer Advocate",
+    "company": "Automattic",
+    "verified_accounts": [
+      {
+        "service_type": "wordpress",
+        "service_label": "WordPress",
+        "service_icon": "https://gravatar.com/icons/wordpress.svg",
+        "url": "https://icodeforapurpose.com",
+        "is_hidden": false
+      },
+      {
+        "service_type": "twitter",
+        "service_label": "Twitter",
+        "service_icon": "https://gravatar.com/icons/twitter-alt.svg",
+        "url": "http://twitter.com/bph",
+        "is_hidden": false
+      },
+      {
+        "service_type": "linkedin",
+        "service_label": "LinkedIn",
+        "service_icon": "https://gravatar.com/icons/linkedin.svg",
+        "url": "https://www.linkedin.com/in/birgitpaulihaack",
+        "is_hidden": false
+      },
+      {
+        "service_type": "mastodonsocial",
+        "service_label": "Mastodon",
+        "service_icon": "https://gravatar.com/icons/mastodonsocial.svg",
+        "url": "https://mastodon.social/@bph",
+        "is_hidden": false
+      }
+    ],
+    "pronunciation": "Bir = Beer / Git = GitHub",
+    "pronouns": "she/her",
+    "background_color": "linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%)"
+  },
+  "welcherryan": {
+    "hash": "865d90ad698b325440361a71943d729f8ad5c44c66a6d65c5a046a8323ac7ced",
+    "display_name": "Ryan Welcher",
+    "profile_url": "https://gravatar.com/welcherryan",
+    "avatar_url": "https://0.gravatar.com/avatar/4fa43ab689984fbeb7792dfa32ead017",
+    "avatar_alt_text": "",
+    "location": "Ontario",
+    "description": "",
+    "job_title": "",
+    "company": "",
+    "verified_accounts": [],
+    "pronunciation": "",
+    "pronouns": ""
+  },
+  "ndiego": {
+    "hash": "5d499534bfc21eaf9fa55506d50ffa01881d9a6cba58935552d3a8ac45944c29",
+    "display_name": "Nick Diego",
+    "profile_url": "https://gravatar.com/ndiego",
+    "avatar_url": "https://2.gravatar.com/avatar/3d7fa7ad5d444a1841376904283f9fb4",
+    "avatar_alt_text": "",
+    "location": "Minneapolis, MN",
+    "description": "Developer Advocacy. WordPress Contribution. Plugin Development.",
+    "job_title": "Developer Advocate",
+    "company": "Automattic",
+    "verified_accounts": [
+      {
+        "service_type": "wordpress",
+        "service_label": "WordPress",
+        "service_icon": "https://gravatar.com/icons/wordpress.svg",
+        "url": "https://nickdiego.com",
+        "is_hidden": false
+      },
+      {
+        "service_type": "twitter",
+        "service_label": "Twitter",
+        "service_icon": "https://gravatar.com/icons/twitter-alt.svg",
+        "url": "https://twitter.com/nickmdiego",
+        "is_hidden": false
+      },
+      {
+        "service_type": "github",
+        "service_label": "GitHub",
+        "service_icon": "https://gravatar.com/icons/github.svg",
+        "url": "https://github.com/ndiego",
+        "is_hidden": false
+      },
+      {
+        "service_type": "instagram",
+        "service_label": "Instagram",
+        "service_icon": "https://gravatar.com/icons/instagram.svg",
+        "url": "https://instagram.com/nickmdiego",
+        "is_hidden": false
+      }
+    ],
+    "pronunciation": "",
+    "pronouns": "",
+    "background_color": "#1F1F1F"
+  },
+  "justinleetadlock": {
+    "hash": "8013a62d7397c006bae48b96d6832a573ea71a7d5d3597fe584210567b508c05",
+    "display_name": "Justin",
+    "profile_url": "https://gravatar.com/justinleetadlock",
+    "avatar_url": "https://0.gravatar.com/avatar/a4e40350afa8a9127b9053759ae45cfb",
+    "avatar_alt_text": "",
+    "location": "",
+    "description": "",
+    "job_title": "",
+    "company": "",
+    "verified_accounts": [],
+    "pronunciation": "",
+    "pronouns": ""
+  },
+  "jbossenger": {
+    "hash": "a8a3c44a68937ee1996ba1bd3325126c4fd962f20b60acc16988dea6b527d14c",
+    "display_name": "Jonathan Bossenger",
+    "profile_url": "https://gravatar.com/jbossenger",
+    "avatar_url": "https://2.gravatar.com/avatar/4fd3f3bbf5f32f9e4738a00d58bdbc57",
+    "avatar_alt_text": "",
+    "location": "Cape Town, South Africa",
+    "description": "Developer educator from Cape Town, South Africa with a passion for open-source software.",
+    "job_title": "",
+    "company": "",
+    "verified_accounts": [
+      {
+        "service_type": "wordpress",
+        "service_label": "WordPress",
+        "service_icon": "https://gravatar.com/icons/wordpress.svg",
+        "url": "https://jonathanbossenger.com",
+        "is_hidden": false
+      },
+      {
+        "service_type": "twitter",
+        "service_label": "Twitter",
+        "service_icon": "https://gravatar.com/icons/twitter-alt.svg",
+        "url": "https://twitter.com/jon_bossenger",
+        "is_hidden": false
+      },
+      {
+        "service_type": "tumblr",
+        "service_label": "Tumblr",
+        "service_icon": "https://gravatar.com/icons/tumblr.svg",
+        "url": "https://jonathanbossenger.tumblr.com",
+        "is_hidden": false
+      },
+      {
+        "service_type": "mastodongeneric",
+        "service_label": "Mastodon",
+        "service_icon": "https://gravatar.com/icons/mastodongeneric.svg",
+        "url": "https://fosstodon.org/@jonathanbossenger",
+        "is_hidden": false
+      }
+    ],
+    "pronunciation": "Jon-a-thin Boss-in-jer",
+    "pronouns": "he/him"
+  },
+  "griffbrad": {
+    "hash": "30fa59f7990e3e399582c9113e220c11a2beba908899ea67ed005e1ea9c057cc",
+    "display_name": "Brad Griffith",
+    "profile_url": "https://gravatar.com/griffbrad",
+    "avatar_url": "https://1.gravatar.com/avatar/7a4b5f19c23dc7623beba50160d6295a",
+    "avatar_alt_text": "",
+    "location": "",
+    "description": "",
+    "job_title": "",
+    "company": "",
+    "verified_accounts": [],
+    "pronunciation": "",
+    "pronouns": ""
+  }
+}
