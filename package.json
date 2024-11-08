@@ -1,0 +1,16 @@
+{
+  "name": "gravatar-bindings",
+  "version": "1.0.0",
+  "author": "Mario Santos",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts builds",
+    "start": "wp-scripts start",
+    "dev": "npm start"
+  },
+  "devDependencies": {
+    "@wordpress/prettier-config": "^4.0.0",
+    "@wordpress/scripts": "^27.3.0",
+    "prettier": "npm:wp-prettier@3.0.3"
+  }
+}

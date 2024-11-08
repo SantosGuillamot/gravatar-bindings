@@ -1,0 +1,31 @@
+<ruleset name="WordPress Coding Standards for Gravatar Plugin">
+  <description>
+    Sniffs for WordPress plugins, with minor modifications for Gravatar Plugin
+  </description>
+
+  <config name="testVersion" value="5.6-" />
+  <rule ref="PHPCompatibilityWP">
+    <include-pattern>./php$</include-pattern>
+  </rule>
+
+  <rule ref="WordPress-Core" />
+  <rule ref="WordPress-Docs" />
+  <rule ref="WordPress.WP.I18n" />
+  <config name="text_domain" value="santosguillamot,default" />
+
+  <rule ref="PEAR.Functions.FunctionCallSignature">
+    <properties>
+      <property name="allowMultipleArguments" value="false" />
+    </properties>
+  </rule>
+
+  <arg value="ps" />
+  <arg name="extensions" value="php" />
+
+  <file>./index.php</file>
+  <file>./src</file>
+
+  <exclude-pattern>./build</exclude-pattern>
+  <exclude-pattern>./vendor</exclude-pattern>
+  <exclude-pattern>./node_modules</exclude-pattern>
+</ruleset>;
