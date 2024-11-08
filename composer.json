@@ -25,5 +25,8 @@
       "Composer\\Config::disableProcessTimeout",
       "@php ./vendor/phpunit/phpunit/phpunit"
     ]
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.6"
   }
 }
