@@ -11,14 +11,13 @@ registerBlockBindingsSource({
     const newValues = {};
 
     for (const [attributeName, source] of Object.entries(bindings)) {
-      const { field } = source.args;
-      const { gravatar_id: id } = getEditedEntityRecord(
-        "postType",
-        context?.postType,
-        context?.postId
-      ).meta;
+      const { key, field } = source.args;
+      const { gravatar_id: id } =
+        getEditedEntityRecord("postType", context?.postType, context?.postId)
+          .meta || {};
       // Read from JSON file.
-      newValues[attributeName] = apiResponse[id][field];
+      newValues[attributeName] =
+        apiResponse[id || "santosguillamot"][key || field];
 
       // Fetch from API.
       //   apiFetch({
@@ -33,13 +32,11 @@ registerBlockBindingsSource({
   setValues({ bindings, select, context }) {
     const { getEditedEntityRecord } = select(coreStore);
     Object.values(bindings).forEach(({ args, newValue }) => {
-      const { field } = args;
-      const { gravatar_id: id } = getEditedEntityRecord(
-        "postType",
-        context?.postType,
-        context?.postId
-      ).meta;
-      apiResponse[id][field] = newValue;
+      const { key, field } = args;
+      const { gravatar_id: id } =
+        getEditedEntityRecord("postType", context?.postType, context?.postId)
+          .meta || {};
+      apiResponse[id || "santosguillamot"][key || field] = newValue;
     });
     // Update JSON file.
     // DON'T DO THIS. This is just an example.
@@ -48,4 +45,39 @@ registerBlockBindingsSource({
     });
   },
   canUserEditValue: () => true,
+  getFieldsList({ select, context }) {
+    const { getEditedEntityRecord } = select(coreStore);
+    const { gravatar_id: id } =
+      getEditedEntityRecord("postType", context?.postType, context?.postId)
+        .meta || {};
+    /**
+     * Return object with the following format.
+     * ```js
+     * {
+     *     field_1_key: {
+     *         label: 'Field 1 Label',
+     *         value: 'Field 1 Value',
+     *     },
+     *     field_2_key: {
+     *         label: 'Field 2 Label',
+     *         value: 'Field 2 Value',
+     *     },
+     *     ...
+     * }
+     * ```
+     */
+    return Object.entries(apiResponse[id || "santosguillamot"]).reduce(
+      (acc, [key, value]) => {
+        acc[key] = {
+          label: key
+            .replace(/_/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase()),
+          value: value,
+          type: typeof value,
+        };
+        return acc;
+      },
+      {}
+    );
+  },
 });

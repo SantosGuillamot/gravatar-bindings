@@ -30,7 +30,11 @@ function gravatar_register_block_bindings_source() {
 			'get_value_callback' => function ( $source_args, $block_instance ) {
 				$post_id = $block_instance->context['postId'];
 				$user_id = get_post_meta( $post_id, 'gravatar_id', true );
-				$field = $source_args['field'];
+				if ( isset( $source_args['key'] ) ) {
+					$field = $source_args['key'];
+				} else {
+					$field = $source_args['field'];
+				}
 				// Read from JSON file.
 				$file = file_get_contents( plugin_dir_url( __FILE__ ) . '/simulate-data.json' );
 				$api_response = json_decode( $file );
