@@ -1,6 +1,8 @@
 // import apiFetch from "@wordpress/api-fetch";
+import { useBlockBindingsUtils } from "@wordpress/block-editor";
 import { registerBlockBindingsSource } from "@wordpress/blocks";
 import { store as coreStore } from "@wordpress/core-data";
+import { useSelect } from "@wordpress/data";
 
 const { apiResponse } = gravatarData;
 
@@ -45,11 +47,16 @@ registerBlockBindingsSource({
     });
   },
   canUserEditValue: () => true,
-  getFieldsList({ select, context }) {
-    const { getEditedEntityRecord } = select(coreStore);
-    const { gravatar_id: id } =
-      getEditedEntityRecord("postType", context?.postType, context?.postId)
-        .meta || {};
+  render({ context, attribute, binding }) {
+    const { FieldsList } = useBlockBindingsUtils();
+    const id = useSelect((select) => {
+      const { getEditedEntityRecord } = select(coreStore);
+      return getEditedEntityRecord(
+        "postType",
+        context?.postType,
+        context?.postId
+      ).meta?.gravatar_id;
+    }, []);
     /**
      * Return object with the following format.
      * ```js
@@ -66,7 +73,7 @@ registerBlockBindingsSource({
      * }
      * ```
      */
-    return Object.entries(apiResponse[id || "santosguillamot"]).reduce(
+    const fields = Object.entries(apiResponse[id || "santosguillamot"]).reduce(
       (acc, [key, value]) => {
         acc[key] = {
           label: key
@@ -78,6 +85,14 @@ registerBlockBindingsSource({
         return acc;
       },
       {}
+    );
+    return (
+      <FieldsList
+        fields={fields}
+        source={"santosguillamot/gravatar"}
+        attribute={attribute}
+        currentBinding={binding}
+      />
     );
   },
 });
