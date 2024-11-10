@@ -1,15 +1,22 @@
 // import apiFetch from "@wordpress/api-fetch";
 import { registerBlockBindingsSource } from "@wordpress/blocks";
+import { store as coreStore } from "@wordpress/core-data";
 
 const { apiResponse } = gravatarData;
 
 registerBlockBindingsSource({
   name: "santosguillamot/gravatar",
-  getValues({ bindings }) {
+  getValues({ bindings, select, context }) {
+    const { getEditedEntityRecord } = select(coreStore);
     const newValues = {};
 
     for (const [attributeName, source] of Object.entries(bindings)) {
-      const { id, field } = source.args;
+      const { field } = source.args;
+      const { gravatar_id: id } = getEditedEntityRecord(
+        "postType",
+        context?.postType,
+        context?.postId
+      ).meta;
       // Read from JSON file.
       newValues[attributeName] = apiResponse[id][field];
 
@@ -23,9 +30,15 @@ registerBlockBindingsSource({
     }
     return newValues;
   },
-  setValues({ bindings }) {
+  setValues({ bindings, select, context }) {
+    const { getEditedEntityRecord } = select(coreStore);
     Object.values(bindings).forEach(({ args, newValue }) => {
-      const { id, field } = args;
+      const { field } = args;
+      const { gravatar_id: id } = getEditedEntityRecord(
+        "postType",
+        context?.postType,
+        context?.postId
+      ).meta;
       apiResponse[id][field] = newValue;
     });
     // Update JSON file.

@@ -26,12 +26,14 @@ function gravatar_register_block_bindings_source() {
 		'santosguillamot/gravatar',
 		array(
 			'label'              => __( 'Gravatar', 'santosguillamot' ),
-			'get_value_callback' => function ( $source_args ) {
+			'uses_context'       => array( 'postId', 'postType' ),
+			'get_value_callback' => function ( $source_args, $block_instance ) {
+				$post_id = $block_instance->context['postId'];
+				$user_id = get_post_meta( $post_id, 'gravatar_id', true );
+				$field = $source_args['field'];
 				// Read from JSON file.
 				$file = file_get_contents( plugin_dir_url( __FILE__ ) . '/simulate-data.json' );
 				$api_response = json_decode( $file );
-				$user_id = $source_args['id'];
-				$field = $source_args['field'];
 				return $api_response->$user_id->$field;
 
 				// Fetch data from Gravatar API.
@@ -52,6 +54,25 @@ function gravatar_register_block_bindings_source() {
 	);
 }
 add_action( 'init', 'gravatar_register_block_bindings_source' );
+
+/**
+ * Register gravatar id custom field.
+ */
+function gravatar_register_custom_field() {
+	register_meta(
+		'post',
+		'gravatar_id',
+		array(
+			'label'          => 'Gravatar ID',
+			'object_subtype' => 'page',
+			'show_in_rest'   => true,
+			'single'         => true,
+			'type'           => 'string',
+			'default'        => 'santosguillamot',
+		)
+	);
+}
+add_action( 'init', 'gravatar_register_custom_field' );
 
 /**
  * Enqueue JS files.
