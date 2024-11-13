@@ -1,4 +1,3 @@
-// import apiFetch from "@wordpress/api-fetch";
 import { useBlockBindingsUtils } from "@wordpress/block-editor";
 import { registerBlockBindingsSource } from "@wordpress/blocks";
 import { store as coreStore } from "@wordpress/core-data";
@@ -8,7 +7,7 @@ const { apiResponse } = gravatarData;
 
 registerBlockBindingsSource({
   name: "santosguillamot/gravatar",
-  getValues({ bindings, select, context }) {
+  getValues: async ({ bindings, select, context }) => {
     const { getEditedEntityRecord } = select(coreStore);
     const newValues = {};
 
@@ -17,17 +16,12 @@ registerBlockBindingsSource({
       const { gravatar_id: id } =
         getEditedEntityRecord("postType", context?.postType, context?.postId)
           .meta || {};
-      // Read from JSON file.
-      newValues[attributeName] =
-        apiResponse[id || "santosguillamot"][key || field];
-
-      // Fetch from API.
-      //   apiFetch({
-      //     url: "https://api.gravatar.com/v3/profiles/" + id,
-      //     headers: {
-      //       Authorization: "Bearer 1234",
-      //     },
-      //   });
+      // Fetch from Gravatar API.
+      const response = await fetch(
+        "https://api.gravatar.com/v3/profiles/" + id
+      );
+      const responseJson = await response.json();
+      newValues[attributeName] = responseJson?.[key || field];
     }
     return newValues;
   },
